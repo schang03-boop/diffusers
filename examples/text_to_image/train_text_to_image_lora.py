@@ -512,7 +512,7 @@ def main():
     text_encoder = CLIPTextModel.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="text_encoder", revision=args.revision
     )
-    text_encoder.resize_token_embeddings(len(SPECIAL_TOKENS))
+    text_encoder.resize_token_embeddings(len(tokenizer))
     vae = AutoencoderKL.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="vae", revision=args.revision, variant=args.variant
     )
