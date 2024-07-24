@@ -108,6 +108,8 @@ def log_validation(
     accelerator,
     epoch,
     is_final_validation=False,
+    height=128,
+    width=128,
 ):
     logger.info(
         f"Running validation... \n Generating {args.num_validation_images} images with prompt:"
@@ -126,7 +128,8 @@ def log_validation(
 
     with autocast_ctx:
         for _ in range(args.num_validation_images):
-            images.append(pipeline(args.validation_prompt, num_inference_steps=30, generator=generator).images[0])
+            images.append(pipeline(args.validation_prompt, num_inference_steps=30, generator=generator, height=height, \
+                                   width=width, guidance_scale=1.5).images[0])
 
     for tracker in accelerator.trackers:
         phase_name = "test" if is_final_validation else "validation"
@@ -949,13 +952,16 @@ def main():
                 revision=args.revision,
                 variant=args.variant,
                 torch_dtype=weight_dtype,
+                safety_checker=None,
+                requires_safety_checker=False,
             )
 
             # load attention processors
             pipeline.load_lora_weights(args.output_dir)
 
             # run inference
-            images = log_validation(pipeline, args, accelerator, epoch, is_final_validation=True)
+            images = log_validation(pipeline, args, accelerator, epoch, is_final_validation=True, \
+                                    height=args.resolution, width=args.resolution)
 
         if args.push_to_hub:
             save_model_card(
