@@ -441,6 +441,7 @@ DATASET_NAME_MAPPING = {
 SPECIAL_TOKENS = [
     "Japanese Kanji Character: ",
     "Meanings: ",
+    "Kangxi Radical: 85",
     "Kangxi Radical: ",
     "Similar Characters: ",
     "UCS ID: ",
@@ -450,6 +451,7 @@ SPECIAL_TOKENS = [
     "jis213: ",
     "1-25",
 ]
+
 
 def main():
     args = parse_args()
