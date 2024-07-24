@@ -508,7 +508,7 @@ def main():
     tokenizer = CLIPTokenizer.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="tokenizer", revision=args.revision
     )
-    tokenizer.add_special_tokens(SPECIAL_TOKENS)
+    tokenizer.add_special_tokens({'additional_special_tokens': SPECIAL_TOKENS})
     text_encoder = CLIPTextModel.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="text_encoder", revision=args.revision
     )
