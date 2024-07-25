@@ -508,7 +508,7 @@ def main():
         args.pretrained_model_name_or_path, subfolder="tokenizer", revision=args.revision
     )
     tokenizer.add_special_tokens({'additional_special_tokens': SPECIAL_TOKENS})
-    tokenizer.save_pretrained(f"{args.pretrained_model_name_or_path}/tokenizer")
+    #tokenizer.save_pretrained(f"{args.pretrained_model_name_or_path}/tokenizer")
     print(f"Successfully added special tokens: {SPECIAL_TOKENS}!")
     text_encoder = CLIPTextModel.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="text_encoder", revision=args.revision
