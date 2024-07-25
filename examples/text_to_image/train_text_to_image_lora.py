@@ -507,13 +507,13 @@ def main():
     tokenizer = CLIPTokenizer.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="tokenizer", revision=args.revision
     )
-    tokenizer.add_special_tokens({'additional_special_tokens': SPECIAL_TOKENS})
+    #tokenizer.add_special_tokens({'additional_special_tokens': SPECIAL_TOKENS})
     #tokenizer.save_pretrained(f"{args.pretrained_model_name_or_path}/tokenizer")
-    print(f"Successfully added special tokens: {SPECIAL_TOKENS}!")
+    #print(f"Successfully added special tokens: {SPECIAL_TOKENS}!")
     text_encoder = CLIPTextModel.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="text_encoder", revision=args.revision
     )
-    text_encoder.resize_token_embeddings(len(tokenizer))
+    #text_encoder.resize_token_embeddings(len(tokenizer))
     vae = AutoencoderKL.from_pretrained(
         args.pretrained_model_name_or_path, subfolder="vae", revision=args.revision, variant=args.variant
     )
