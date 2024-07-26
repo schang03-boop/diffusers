@@ -441,9 +441,9 @@ DATASET_NAME_MAPPING = {
 SPECIAL_TOKENS = [
     "Kanji",
     "Kangxi_radical",
-    "Nelson_radical"
+    "Nelson_radical",
     "Similar_kanjis",
-    "Radicals"
+    "Radicals",
     "UCS_ID",
     "Other_IDs",
     "jis212",
